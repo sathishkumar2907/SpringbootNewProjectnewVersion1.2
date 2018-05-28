@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.thymeleaf.org">
+ <head>
+<title>Upload File</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+
+<body>
+    <form method="POST" enctype="multipart/form-data"
+                    id="fileUploadForm" action="/upload">
+                    <div class="controls">
+                        <div class="entry input-group col-xs-3">
+                            <input class="btn btn-primary" name="files" type="file">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success btn-add" type="button">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+
+</body>
+</html>
+
