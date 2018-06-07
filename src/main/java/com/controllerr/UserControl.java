@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -25,6 +27,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -61,7 +64,7 @@ public class UserControl {
 
 	    @RequestMapping(value="/save1",method=RequestMethod.POST)  
 	   @ResponseBody
-	    public Response save(@ModelAttribute @Valid User user,BindingResult result, ModelMap model){  
+	    public Response save(@RequestBody @ModelAttribute @Valid User user,BindingResult result, ModelMap model){  
 
 	    	  Response respone=new Response();
 	    	  
@@ -121,15 +124,17 @@ public class UserControl {
 
 	    	
 	    
-	  @RequestMapping(value="/save", method=RequestMethod.POST)
+	  @RequestMapping(value="/save", method=RequestMethod.GET)
 	   @ResponseBody
-		public Response getAllEmployees(ModelMap model){
+		public Response getAllEmployees(ModelMap model) throws JSONException{
 	    
 		    Response respone=new Response();
 	    
 	    	List<User> user_list=userserv.getAllEmployees();
 	    	System.out.println("user_list-->"+user_list);
 	     	
+	    
+	    	
 	    	model.addAttribute("posts",user_list);
 	    	respone.setData(user_list);
 	    	respone.setValidated(true);

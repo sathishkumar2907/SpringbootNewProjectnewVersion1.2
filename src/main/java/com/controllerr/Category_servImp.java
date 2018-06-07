@@ -1,14 +1,21 @@
 package com.controllerr;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+@Transactional
 @Service
 public class Category_servImp implements Category_servic{
 
 	@Autowired
 	private Category_Repo catRepos;
 	
+	//@PersistenceContext
+	//EntityManager entityManager;
+
 	
 	public void save_category(Category_Model category) {
 		
@@ -16,6 +23,7 @@ public class Category_servImp implements Category_servic{
 	        resource.s
 	    }
 		*/
+		//entityManager.persist(category);
 		catRepos.save(category);
 	 }
 

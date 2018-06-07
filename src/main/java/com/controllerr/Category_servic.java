@@ -1,5 +1,10 @@
 package com.controllerr;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+
 public interface Category_servic {
 	
 	public void save_category(Category_Model category); 
